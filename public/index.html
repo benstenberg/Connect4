@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <title>Connect 4</title>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous">
+        </script>
+
+    <!-- BOOTSTRAP CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!-- BOOTSTRAP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+        </script>
+
+    <script src="./javascripts/game.js"></script>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+</head>
+
+<body onload="loadData()">
+
+    <!-- The game list view -->
+    <div class="homeView">
+        <div class="container mt-4">
+            <div class="row gx-2">
+                <div class="col-2">
+                    <div class="input-group">
+                        <label for="colorInput" class="input-group-text">Color</label>
+                        <input type="color" id="colorInput" value="#563d7c" title="Choose your color"
+                            class="form-control form-control-color">
+                    </div>
+                </div>
+
+                <!-- Player select icon -->
+                <div class="col-2">
+                    <div class="input-group">
+                        <div class="input-group-text">Player</div>
+                        <select class="form-control form-control-select" id="player-select">
+                        </select>
+                    </div>
+                </div>
+
+                <!-- CPU select icon -->
+                <div class="col-2">
+                    <div class="input-group">
+                        <div class="input-group-text">Computer</div>
+                        <select class="form-control form-control-select" id="computer-select">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-1">
+                    <button onclick="createGame()" type="button" class="btn btn-primary">CREATE</button>
+                </div>
+
+            </div>
+
+            <table class="table table-striped mt-3" id="table">
+                <thead>
+                    <tr class="table-active">
+                        <th>Status</th>
+                        <th class="text-center">Player</th>
+                        <th class="text-center">Computer</th>
+                        <th>Time Started</th>
+                        <th>Time Finished</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <!-- End game list view -->
+
+    <!-- Game view -->
+    <div class="gameView">
+        <div class="container">
+            <div class="row mt-4">
+                <button type="button" onclick="changeView()" class="btn btn-primary">Return</button>
+            </div>
+
+            <div id="finished-gif" class="row"></div>
+        </div>
+
+        <div class="container">
+            <div class="grid-container">
+                <div class="grid-header">
+                    <div class="cell-hover"><button type="button" class="cell-place" onclick="placePiece(0)"></button></div>
+                    <div class="cell-hover"><button type="button" class="cell-place" onclick="placePiece(1)"></button></div>
+                    <div class="cell-hover"><button type="button" class="cell-place" onclick="placePiece(2)"></button></div>
+                    <div class="cell-hover"><button type="button" class="cell-place" onclick="placePiece(3)"></button></div>
+                    <div class="cell-hover"><button type="button" class="cell-place" onclick="placePiece(4)"></button></div>
+                    <div class="cell-hover"><button type="button" class="cell-place" onclick="placePiece(5)"></button></div>
+                    <div class="cell-hover"><button type="button" class="cell-place" onclick="placePiece(6)"></button></div>
+                </div>
+
+                <div class="grid">
+                    <!-- ROW 1 (top) -->
+                    <div id="r0c0" class="cell"></div>
+                    <div id="r0c1" class="cell"></div>
+                    <div id="r0c2" class="cell"></div>
+                    <div id="r0c3" class="cell"></div>
+                    <div id="r0c4" class="cell"></div>
+                    <div id="r0c5" class="cell"></div>
+                    <div id="r0c6" class="cell"></div>
+
+                    <!-- ROW 2 -->
+                    <div id="r1c0" class="cell"></div>
+                    <div id="r1c1" class="cell"></div>
+                    <div id="r1c2" class="cell"></div>
+                    <div id="r1c3" class="cell"></div>
+                    <div id="r1c4" class="cell"></div>
+                    <div id="r1c5" class="cell"></div>
+                    <div id="r1c6" class="cell"></div>
+
+                    <!-- ROW 3  -->
+                    <div id="r2c0" class="cell"></div>
+                    <div id="r2c1" class="cell"></div>
+                    <div id="r2c2" class="cell"></div>
+                    <div id="r2c3" class="cell"></div>
+                    <div id="r2c4" class="cell"></div>
+                    <div id="r2c5" class="cell"></div>
+                    <div id="r2c6" class="cell"></div>
+
+                    <!-- ROW 4 -->
+                    <div id="r3c0" class="cell"></div>
+                    <div id="r3c1" class="cell"></div>
+                    <div id="r3c2" class="cell"></div>
+                    <div id="r3c3" class="cell"></div>
+                    <div id="r3c4" class="cell"></div>
+                    <div id="r3c5" class="cell"></div>
+                    <div id="r3c6" class="cell"></div>
+
+                    <!-- ROW 5 (bottom) -->
+                    <div id="r4c0" class="cell"></div>
+                    <div id="r4c1" class="cell"></div>
+                    <div id="r4c2" class="cell"></div>
+                    <div id="r4c3" class="cell"></div>
+                    <div id="r4c4" class="cell"></div>
+                    <div id="r4c5" class="cell"></div>
+                    <div id="r4c6" class="cell"></div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <p id="game-status" class="text-center fs-2">UNFINISHED</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- End game view -->
+
+</body>
+
+</html>

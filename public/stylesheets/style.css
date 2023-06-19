@@ -1,0 +1,86 @@
+.homeView {
+  display: block;
+}
+
+.gameView {
+  display: none;
+}
+
+.grid-container {
+  outline: 1px solid gray;
+  width:770px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns: repeat(7, 110px);
+  grid-template-rows: repeat(5, 110px);
+  justify-content: center;
+  width: 770px;
+  height: 550px;
+  background-color: orange;
+}
+
+.grid-header {
+  display:grid;
+  grid-template-columns: repeat(7, 110px);
+  grid-template-rows: repeat(1, 110px);
+  height:110px;
+  width:770px;
+  background-color: white;
+}
+
+.cell {
+  background-color: white;
+  border-radius:50%;
+  outline: 1px solid black;
+  margin:5px;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  margin: auto;
+
+}
+
+.tableimg {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius:50%;
+}
+
+.grid-img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius:50%;
+}
+
+.gif {
+  grid-column: 1 / span 7;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.cell-place {
+  background-color: white;
+  border-radius: 50%;
+}
+.cell-place img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius:50%;
+}
+
+.cell-hover button {
+ visibility: hidden;
+}
+.cell-hover:hover button {
+  visibility: visible;
+}
